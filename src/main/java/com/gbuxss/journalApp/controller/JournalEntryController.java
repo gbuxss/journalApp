@@ -2,7 +2,10 @@ package com.gbuxss.journalApp.controller;
 
 import com.gbuxss.journalApp.entity.JournalEntry;
 import com.gbuxss.journalApp.service.JournalEntryService;
+
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -21,7 +24,6 @@ public class JournalEntryController {
 
     @Autowired
     private JournalEntryService journalEntryService;
-
 
     @GetMapping
     public ResponseEntity<?> getAll() {
