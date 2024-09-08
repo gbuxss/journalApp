@@ -1,16 +1,12 @@
 package com.gbuxss.journalApp.controller;
 
-import com.gbuxss.journalApp.entity.JournalEntry;
-import com.gbuxss.journalApp.service.JournalEntryService;
+import com.gbuxss.journalApp.entity.User;
 import com.gbuxss.journalApp.service.UserService;
-import org.apache.catalina.User;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController()
@@ -32,16 +28,17 @@ public class UserController {
         userService.saveEntry(newUser);
     }
 
-    @PutMapping
-    public ResponseEntity<?> updateUser (@RequestBody User user) {
-        User userInDB = userService.findByUserName(user.getUsername());
+    @PutMapping("/{userName}")
+    public ResponseEntity<?> updateUser (@RequestBody User user, @PathVariable String userName) {
+        User userInDB = userService.findByUserName(userName);
         if (userInDB != null) {
-            userInDB.setUsername(user.getUsername());
+            userInDB.setUserName(user.getUserName());
             userInDB.setPassword(user.getPassword());
             userService.saveEntry(userInDB);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 
 
 

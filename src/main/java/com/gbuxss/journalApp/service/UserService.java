@@ -1,7 +1,7 @@
 package com.gbuxss.journalApp.service;
 
+import com.gbuxss.journalApp.entity.User;
 import com.gbuxss.journalApp.repository.UserRepository;
-import org.apache.catalina.User;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,6 @@ public class UserService {
     private UserRepository userRepository;
 
     public void saveEntry(User user) {
-
         userRepository.save(user);
     }
 
@@ -35,6 +34,6 @@ public class UserService {
     }
 
     public User findByUserName(String userName) {
-        return userRepository.findByUsername(userName);
+        return userRepository.findByUserName(userName);
     }
 }
