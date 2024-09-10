@@ -2,16 +2,19 @@ package com.gbuxss.journalApp.service;
 
 import com.gbuxss.journalApp.entity.User;
 import com.gbuxss.journalApp.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+@Service
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -23,6 +26,7 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("User"));
         userRepository.save(user);
+        log.info("User saved successfully.");
     }
 
     public void saveAdminUser(User user) {
