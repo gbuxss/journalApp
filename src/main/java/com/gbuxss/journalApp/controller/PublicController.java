@@ -19,11 +19,7 @@ public class PublicController {
     public String healthCheck() {
         return "OK";
     }
-
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
-    }
+    
 
     @PostMapping("create-user")
     public ResponseEntity<?> createNewUser(@RequestBody User newUser) {
