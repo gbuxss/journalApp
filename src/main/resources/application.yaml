@@ -4,3 +4,11 @@ spring:
       auto-index-creation: true
       uri: mongodb+srv://jeevandhamala095:57XwK0CMhVKbfqEU@cluster0.rc0yl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       database: journaldb
+
+
+server:
+  servlet:
+    context-path: /journal/
+
+
+API_KEY: eab80f77fb90390a0958ef376ba0934e
