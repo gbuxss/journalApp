@@ -4,6 +4,15 @@ spring:
       auto-index-creation: true
       uri: mongodb+srv://jeevandhamala095:57XwK0CMhVKbfqEU@cluster0.rc0yl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       database: journaldb
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gbuxssideas@gmail.com
+    password: yzen pktz zuxr iini
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
 
 
 server:
@@ -12,3 +21,5 @@ server:
 
 
 WEATHER_API_KEY: eab80f77fb90390a0958ef376ba0934e
+
+

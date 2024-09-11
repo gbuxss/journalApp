@@ -18,15 +18,16 @@ import java.util.Collections;
 @RequestMapping("/user")
 public class UserController {
 
+    private final UserService userService;
+    private final UserRepository userRepository;
+    private final WeatherService weatherService;
 
-    @Autowired
-    private UserService userService;
+    public UserController(UserService userService, UserRepository userRepository, WeatherService weatherService) {
+        this.userService = userService;
+        this.userRepository = userRepository;
+        this.weatherService = weatherService;
+    }
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private WeatherService weatherService;
 
 
     @PutMapping

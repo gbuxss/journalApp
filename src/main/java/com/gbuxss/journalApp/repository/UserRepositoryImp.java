@@ -1,7 +1,6 @@
 package com.gbuxss.journalApp.repository;
 
 import com.gbuxss.journalApp.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -12,8 +11,11 @@ import java.util.List;
 @Component
 public class UserRepositoryImp {
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
+
+    public UserRepositoryImp(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     public List<User> getUserForSA() {
         Query query = new Query();
