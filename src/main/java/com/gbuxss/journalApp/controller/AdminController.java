@@ -1,5 +1,6 @@
 package com.gbuxss.journalApp.controller;
 
+import com.gbuxss.journalApp.cache.AppCache;
 import com.gbuxss.journalApp.entity.User;
 import com.gbuxss.journalApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AppCache appCache;
+
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers() {
         List<User> allUsers = userService.getAllUsers();
@@ -31,5 +35,10 @@ public class AdminController {
     public ResponseEntity<?> createAdminUser (@RequestBody User user) {
         userService.saveAdminUser(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/clear-app-cache")
+    public void clearAppCache(){
+            appCache.init();
     }
 }

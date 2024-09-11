@@ -11,4 +11,4 @@ server:
     context-path: /journal/
 
 
-API_KEY: eab80f77fb90390a0958ef376ba0934e
+WEATHER_API_KEY: eab80f77fb90390a0958ef376ba0934e
