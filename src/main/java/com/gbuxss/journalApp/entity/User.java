@@ -25,6 +25,10 @@ public class User {
     @NonNull
     private String password;
 
+    private String email;
+
+    private boolean sentimentAnalysis;
+
 
     private List<String> roles;
 
