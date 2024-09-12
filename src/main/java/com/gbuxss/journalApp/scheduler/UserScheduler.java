@@ -26,7 +26,7 @@ public class UserScheduler {
     }
 
 
-    @Scheduled(cron = "0 8 * * 1")
+    @Scheduled(cron = "0 0 8 22 * *")
     public void fetchUserAndSendSAEmail() {
         List<User> users = userRepositoryImp.getUserForSA();
         for (User user : users) {

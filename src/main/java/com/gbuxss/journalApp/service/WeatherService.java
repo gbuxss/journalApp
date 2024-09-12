@@ -15,22 +15,31 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class WeatherService {
 
-   @Autowired
+    @Autowired
     private RestTemplate restTemplate;
 
-   @Autowired
+    @Autowired
     private AppCache appCache;
 
-   @Value("${WEATHER_API_KEY}")
-   private String apikey ;
+    @Autowired
+    private RedisService redisService;
+
+    @Value("${WEATHER_API_KEY}")
+    private String apikey;
 
 
     public WeatherResponse getWeather(String city) {
-        String finalAPI= appCache.appCache.get(AppCache.keys.WEATHER_API.toString()).replace(Placeholder.CITY, city).replace(Placeholder.API_KEY, apikey);
-        ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);
-        return response.getBody();
+        WeatherResponse weatherResponse = redisService.get(city, WeatherResponse.class);
+        if (weatherResponse != null) {
+            return weatherResponse;
+        } else {
+            String finalAPI = appCache.appCache.get(AppCache.keys.WEATHER_API.toString()).replace(Placeholder.CITY, city).replace(Placeholder.API_KEY, apikey);
+            ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);
+            WeatherResponse body = response.getBody();
+            if (body != null) {
+                redisService.set(city, body, 300L);
+            }
+            return body;
+        }
     }
-
-
-
 }

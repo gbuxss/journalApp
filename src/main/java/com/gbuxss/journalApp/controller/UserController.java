@@ -22,10 +22,12 @@ public class UserController {
     private final UserRepository userRepository;
     private final WeatherService weatherService;
 
+
     public UserController(UserService userService, UserRepository userRepository, WeatherService weatherService) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.weatherService = weatherService;
+
     }
 
 
@@ -52,7 +54,8 @@ public class UserController {
     @GetMapping
     public ResponseEntity<?> getWeatherData() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        WeatherResponse response = weatherService.getWeather("Chicago");
+        User user = userService.findByUserName(authentication.getName());
+        WeatherResponse response = weatherService.getWeather(user.getCity());
         String greeting = "";
         if (response != null) {
             greeting = " Weather feels like " + response.getCurrent().getFeelslike() ;
