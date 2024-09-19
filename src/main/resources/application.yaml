@@ -2,13 +2,13 @@ spring:
   data:
     mongodb:
       auto-index-creation: true
-      uri: mongodb+srv://jeevandhamala095:57XwK0CMhVKbfqEU@cluster0.rc0yl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      uri: 
       database: journaldb
   mail:
     host: smtp.gmail.com
     port: 587
-    username: gbuxssideas@gmail.com
-    password: yzen pktz zuxr iini
+    username: 
+    password: 
     properties:
       mail:
         smtp:
@@ -16,9 +16,9 @@ spring:
           starttls:
             enable: true
   redis:
-    host: redis-17115.c93.us-east-1-3.ec2.redns.redis-cloud.com
+    host: 
     port: 17115
-    password: c0SDeH6GSZ5wtlBNWlnyE1AOpE0rROci
+    password: 
 
 
 
@@ -28,7 +28,7 @@ server:
 
 
   kafka:
-    bootstrap-servers: aws.confluent.cloud:9092
+    bootstrap-servers: 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -54,8 +54,8 @@ server:
 
 
 
-WEATHER_API_KEY: eab80f77fb90390a0958ef376ba0934e
-SECRET_KEY: Ts2AShXD8e5DY4xCidYmVi8zmSuXNo3s
+WEATHER_API_KEY: 
+SECRET_KEY: 
   
 
 
